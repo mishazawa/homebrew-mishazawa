@@ -22,8 +22,8 @@ class MyScrobbler < Formula
 
   def caveats
     <<~EOS
-      To make mac-scrobbler work, you must create a configuration file at:
-        ~/.config/mac-scrobbler/config.env
+      To make my_scrobbler work, you must create a configuration file at:
+        ~/.config/my_scrobbler/config.env
 
       Add your Last.fm credentials:
         LASTFM_API_KEY="your_api_key"
