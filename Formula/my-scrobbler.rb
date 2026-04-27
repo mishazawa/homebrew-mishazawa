@@ -13,6 +13,7 @@ class MyScrobbler < Formula
   # THIS IS THE BACKGROUND MAGIC
   service do
     run opt_bin/"my_scrobbler"
+    environment_variables PYTHONUNBUFFERED: "1"
     keep_alive true          # If it crashes, macOS automatically restarts it
     run_at_load true         # Start it automatically when the Mac boots up
     log_path var/"log/my_scrobbler.log"
