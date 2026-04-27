@@ -1,4 +1,4 @@
-class MacScrobbler < Formula
+class MyScrobbler < Formula
   desc "my headless scrobbler for Apple Music"
   homepage "https://github.com/mishazawa/my_scrobbler"
   url "https://github.com/mishazawa/my_scrobbler/releases/download/v0.1.0/my_scrobbler"
