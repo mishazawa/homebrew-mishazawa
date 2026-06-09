@@ -1,8 +1,8 @@
 class MyScrobbler < Formula
   desc "my headless scrobbler for Apple Music"
   homepage "https://github.com/mishazawa/my_scrobbler"
-  url "https://github.com/mishazawa/my_scrobbler/releases/download/v1.0.0/my_scrobbler"
-  sha256 "9415139e5da0523611779e81a6c7f2076b6244d8d44d24447650d3b8bbd757a4"
+  url "https://github.com/mishazawa/my_scrobbler/releases/download/v1.0.5/my_scrobbler"
+  sha256 "bc5c81b99b975aeec2e2152bd17213102eff71a4d6fef4293f4107d9972a5092"
   version "1.0.0"
 
   def install
