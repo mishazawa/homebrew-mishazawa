@@ -7,7 +7,7 @@ cask "clip-studio-paint" do
   desc "Software for drawing and painting"
   homepage "https://www.clipstudio.net/en"
 
-  depends_on macos: ">= :monterey"
+  depends_on :macos
 
   installer manual: "CSP_#{version.no_dots}m_app.pkg"
 

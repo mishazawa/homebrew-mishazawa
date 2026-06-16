@@ -11,8 +11,7 @@ cask "wacom-tablet" do
     url :homepage
     regex(%r{/WacomTablet[._-]?v?(\d+(?:\.\d+)+(?:[_-]\d+[a-z]?)?)\.dmg}i)
   end
-
-  depends_on macos: ">= :monterey"
+  depends_on :macos
 
   pkg "Install Wacom Tablet.pkg"
 
