@@ -13,7 +13,7 @@ cask "qbittorrent" do
     regex(%r{url=.*?/qbittorrent[._-]v?(\d+(?:\.\d+)+)\.dmg}i)
   end
   
-  depends_on :macos
+  depends_on macos: ">= :monterey"
 
   # Renamed for consistency: app name is different in the Finder and in a shell.
   app "qbittorrent.app", target: "qBittorrent.app"
