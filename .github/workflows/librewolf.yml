@@ -30,7 +30,7 @@ jobs:
           echo "version=$CURRENT" >> "$GITHUB_OUTPUT"
 
       - name: Update cask if new version
-        # if: steps.latest.outputs.version != steps.current.outputs.version
+        if: steps.latest.outputs.version != steps.current.outputs.version
         run: |
           NEW="${{ steps.latest.outputs.version }}"
           SUMS=$(curl -sL "https://dl.librewolf.net/librewolf/$NEW/sha256sums.txt")
