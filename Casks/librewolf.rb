@@ -6,7 +6,7 @@ cask "librewolf" do
          intel: "5cfd07d342cd98b59b44cd2db86cfdabadab3ca7957ecd750d141d278a9dfbb6"
 
   url "https://codeberg.org/api/packages/librewolf/generic/librewolf/#{version.tr(",", "-")}/librewolf-#{version.tr(",", "-")}-macos-#{arch}-package.dmg",
-      verified: "codeberg.org/api/packages/librewolf/generic/librewolf/"
+
   name "LibreWolf"
   desc "Web browser"
   homepage "https://librewolf.net/"
