@@ -8,7 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -39,7 +39,7 @@ jobs:
           sed -i "s/version \".*\"/version \"$NEW\"/" Casks/librewolf.rb
           sed -i "s/sha256 \".*\"/sha256 \"$SHA\"/" Casks/librewolf.rb
 
-        echo "new_version=$NEW" >> "$GITHUB_ENV"
+          echo "new_version=$NEW" >> "$GITHUB_ENV"
 
       - name: Create PR
         if: steps.latest.outputs.version != steps.current.outputs.version
