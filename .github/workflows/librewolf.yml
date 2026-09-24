@@ -6,6 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
+  permissions:
+    contents: write
   check:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +37,14 @@ jobs:
           sed -i "s/version \".*\"/version \"$NEW\"/" Casks/librewolf.rb
           sed -i "s/sha256 \".*\"/sha256 \"$SHA\"/" Casks/librewolf.rb
 
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git commit -am "librewolf: update to $NEW"
-          git push
+        echo "new_version=$NEW" >> "$GITHUB_ENV"
+
+      - name: Create PR
+        if: steps.latest.outputs.version != steps.current.outputs.version
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "librewolf: update to ${{ env.new_version }}"
+          title: "librewolf: update to ${{ env.new_version }}"
+          branch: bump-librewolf-${{ env.new_version }}
+          base: main
