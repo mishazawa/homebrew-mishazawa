@@ -30,14 +30,17 @@ jobs:
           echo "version=$CURRENT" >> "$GITHUB_OUTPUT"
 
       - name: Update cask if new version
-        if: steps.latest.outputs.version != steps.current.outputs.version
+        # if: steps.latest.outputs.version != steps.current.outputs.version
         run: |
           NEW="${{ steps.latest.outputs.version }}"
           SUMS=$(curl -sL "https://dl.librewolf.net/librewolf/$NEW/sha256sums.txt")
-          SHA=$(echo "$SUMS" | awk -v pkg="librewolf-$NEW-macos-arm64-package.dmg" '$0 ~ pkg {print $1}')
+
+          ARM_SHA=$(echo "$SUMS" | awk -v pkg="librewolf-$NEW-macos-arm64-package.dmg" '$0 ~ pkg {print $1}')
+          INTEL_SHA=$(echo "$SUMS" | awk -v pkg="librewolf-$NEW-macos-x86_64-package.dmg" '$0 ~ pkg {print $1}')
 
           sed -i "s/version \".*\"/version \"$NEW\"/" Casks/librewolf.rb
-          sed -i "s/sha256 \".*\"/sha256 \"$SHA\"/" Casks/librewolf.rb
+          sed -i -E "s/(arm:[[:space:]]*\")[0-9a-f]{64}(\")/\1${ARM_SHA}\2/" Casks/librewolf.rb
+          sed -i -E "s/(intel:[[:space:]]*\")[0-9a-f]{64}(\")/\1${INTEL_SHA}\2/" Casks/librewolf.rb
 
           echo "new_version=$NEW" >> "$GITHUB_ENV"
 
